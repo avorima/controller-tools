@@ -133,6 +133,7 @@ golangci-lint run --disable-all \
     --enable=gocyclo \
     --enable=gosec \
     --enable=gofmt \
+    --enable=gosimple \
     --deadline=5m \
     ./pkg/... ./cmd/...
 

@@ -394,7 +394,7 @@ func (Generator) Generate(ctx *genall.GenerationContext) error {
 	for k, v := range versionedWebhooks {
 		var fileName string
 		if k == defaultWebhookVersion {
-			fileName = fmt.Sprintf("manifests.yaml")
+			fileName = "manifests.yaml"
 		} else {
 			fileName = fmt.Sprintf("manifests.%s.yaml", k)
 		}

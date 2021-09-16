@@ -471,7 +471,7 @@ func (a *Argument) parseMap(scanner *sc.Scanner, raw string, out reflect.Value) 
 func (a *Argument) parse(scanner *sc.Scanner, raw string, out reflect.Value, inSlice bool) {
 	// nolint:gocyclo
 	if a.Type == InvalidType {
-		scanner.Error(scanner, fmt.Sprintf("cannot parse invalid type"))
+		scanner.Error(scanner, "cannot parse invalid type")
 		return
 	}
 	if a.Pointer {

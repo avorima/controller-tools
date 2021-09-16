@@ -100,9 +100,9 @@ func (g Generator) Generate(ctx *genall.GenerationContext) error {
 		Collector: ctx.Collector,
 		Checker:   ctx.Checker,
 		// Perform defaulting here to avoid ambiguity later
-		AllowDangerousTypes: g.AllowDangerousTypes != nil && *g.AllowDangerousTypes == true,
+		AllowDangerousTypes: g.AllowDangerousTypes != nil && *g.AllowDangerousTypes,
 		// Indicates the parser on whether to register the ObjectMeta type or not
-		GenerateEmbeddedObjectMeta: g.GenerateEmbeddedObjectMeta != nil && *g.GenerateEmbeddedObjectMeta == true,
+		GenerateEmbeddedObjectMeta: g.GenerateEmbeddedObjectMeta != nil && *g.GenerateEmbeddedObjectMeta,
 	}
 
 	AddKnownTypes(parser)
@@ -297,7 +297,7 @@ func toTrivialVersions(crd *apiextlegacy.CustomResourceDefinition) {
 	var canonicalSubresources *apiextlegacy.CustomResourceSubresources
 	var canonicalColumns []apiextlegacy.CustomResourceColumnDefinition
 	for i, ver := range crd.Spec.Versions {
-		if ver.Storage == true {
+		if ver.Storage {
 			canonicalSchema = ver.Schema
 			canonicalSubresources = ver.Subresources
 			canonicalColumns = ver.AdditionalPrinterColumns
